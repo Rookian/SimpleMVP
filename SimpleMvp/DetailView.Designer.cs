@@ -1,6 +1,6 @@
 ﻿namespace SimpleMvp
 {
-  partial class DetailForm
+  partial class DetailView
   {
     /// <summary>
     /// Required designer variable.

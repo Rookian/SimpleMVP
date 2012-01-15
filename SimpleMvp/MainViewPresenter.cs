@@ -2,25 +2,23 @@ using System;
 
 namespace SimpleMvp
 {
-    internal class MainFormPresenter : IPresenter<IMainFormView>
+    public class MainViewPresenter : IPresenter<IMainView>
     {
         private readonly IArticleRepository _articles;
-        private readonly IViewFactory _views;
-        private readonly IMainFormView _view;
+        private readonly IPresenterFactory _presenterFactory;
+        private readonly IMainView _view;
 
-        public MainFormPresenter(IMainFormView view, IArticleRepository articles, IViewFactory views)
+        public MainViewPresenter(IMainView view, IArticleRepository articles, IPresenterFactory presenterFactory)
         {
             _view = view;
             _articles = articles;
-            _views = views;
-
+            _presenterFactory = presenterFactory;
             _view.DetailsClick += View_DetailsClick;
             _view.CloseClick += View_CloseClick;
-
             _view.ShowArticles(_articles.GetAll());
         }
 
-        public IMainFormView View
+        public IMainView View
         {
             get { return _view; }
         }
@@ -39,10 +37,10 @@ namespace SimpleMvp
                 return;
             }
 
-            var details = _views.Create<IDetailView>(
-                new ConstructorParameter { ParameterName = "article", ParameterValue = article });
-
-            _views.ShowDialog(details, View);
+            using (var detailPresenter = _presenterFactory.Create<IPresenter<IDetailView>>(new ConstructorParameter {ParameterName = "article", ParameterValue = article}))
+            {
+                _presenterFactory.ShowDialog(detailPresenter.View, View);
+            }
         }
 
         public void Dispose()

@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace SimpleMvp
 {
-    public partial class MainForm : Form, IMainFormView
+    public partial class MainView : Form, IMainView
     {
-        public MainForm()
+        public MainView()
         {
             InitializeComponent();
         }
@@ -28,10 +28,7 @@ namespace SimpleMvp
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            if (DetailsClick != null)
-            {
-                DetailsClick(this, e);
-            }
+            Raise.Event(DetailsClick, this, e);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

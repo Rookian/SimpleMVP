@@ -3,15 +3,15 @@ using System.Windows.Forms;
 
 namespace SimpleMvp
 {
-    public interface IView
+    public interface IView : IDisposable
     {
-        DialogResult ShowDialog(IWin32Window parent);
+        event EventHandler CloseClick;
+        void Close();
     }
 
     public interface IDetailView : IView
     {
-        event EventHandler CloseClick;
-        void Close();
         void ShowDetails(string article);
+        DialogResult ShowDialog(IWin32Window parent);
     }
 }

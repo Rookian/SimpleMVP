@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace SimpleMvp
 {
-    public partial class DetailForm : Form, IDetailView
+    public partial class DetailView : Form, IDetailView
     {
-        public DetailForm()
+        public DetailView()
         {
             InitializeComponent();
             if (!DesignMode)

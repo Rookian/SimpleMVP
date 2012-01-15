@@ -1,6 +1,6 @@
 ﻿namespace SimpleMvp
 {
-  partial class MainForm
+  partial class MainView
   {
     /// <summary>
     /// Required designer variable.
@@ -67,7 +67,7 @@
       this.btnDetails.UseVisualStyleBackColor = true;
       this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
       // 
-      // MainForm
+      // MainView
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -75,7 +75,7 @@
       this.Controls.Add(this.btnDetails);
       this.Controls.Add(this.btnClose);
       this.Controls.Add(this.lbxArticles);
-      this.Name = "MainForm";
+      this.Name = "MainView";
       this.Text = "Form1";
       this.ResumeLayout(false);
 

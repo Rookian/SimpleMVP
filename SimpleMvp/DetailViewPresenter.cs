@@ -2,11 +2,11 @@ using System;
 
 namespace SimpleMvp
 {
-    internal class DetailFormPresenter : IPresenter<IDetailView>
+    public class DetailViewPresenter : IPresenter<IDetailView>
     {
         private readonly IDetailView _view;
 
-        public DetailFormPresenter(IDetailView view, string article)
+        public DetailViewPresenter(IDetailView view, string article)
         {
             _view = view;
             _view.ShowDetails(article);
