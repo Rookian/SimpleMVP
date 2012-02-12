@@ -1,4 +1,5 @@
 using System;
+using Core;
 
 namespace SimpleMvp
 {
@@ -37,7 +38,7 @@ namespace SimpleMvp
                 return;
             }
 
-            using (var detailPresenter = _presenterFactory.Create<IPresenter<IDetailView>>(new ConstructorParameter {ParameterName = "article", ParameterValue = article}))
+            using (var detailPresenter = _presenterFactory.Create<IPresenter<IDetailView>>(new ConstructorParameter { ParameterName = "article", ParameterValue = article }))
             {
                 _presenterFactory.ShowDialog(detailPresenter.View, View);
             }

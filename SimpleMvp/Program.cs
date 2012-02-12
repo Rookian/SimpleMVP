@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Core;
+using Infrastructure;
 using StructureMap;
 
 namespace SimpleMvp
@@ -20,7 +22,7 @@ namespace SimpleMvp
                     s.WithDefaultConventions();
                     s.ConnectImplementationsToTypesClosing(typeof(IPresenter<>));
                 });
-
+                x.For<IArticleRepository>().Use<ArticleRepository>();
                 x
                     .For<Func<Type, ConstructorParameter, IPresenter<IView>>>()
                     .Use((type, param) => (IPresenter<IView>)ObjectFactory

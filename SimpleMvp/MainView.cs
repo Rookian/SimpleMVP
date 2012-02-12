@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Core;
 
 namespace SimpleMvp
 {
@@ -12,14 +13,14 @@ namespace SimpleMvp
             InitializeComponent();
         }
 
-        public void ShowArticles(IEnumerable<string> articles)
-        {
-            lbxArticles.Items.Clear();
-            lbxArticles.Items.AddRange(articles.ToArray());
-        }
-
         public event EventHandler DetailsClick;
         public event EventHandler CloseClick;
+
+        public void ShowArticles(IEnumerable<Article> articles)
+        {
+            lbxArticles.Items.Clear();
+            lbxArticles.Items.AddRange(articles.Select(x => x.Name).ToArray());
+        }
 
         public string GetSelectedArticle()
         {
@@ -33,10 +34,7 @@ namespace SimpleMvp
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (CloseClick != null)
-            {
-                CloseClick(this, e);
-            }
+            Raise.Event(CloseClick, this, e);
         }
 
         private void lbxArticles_DoubleClick(object sender, EventArgs e)

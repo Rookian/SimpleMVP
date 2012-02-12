@@ -40,13 +40,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConstructorParameter.cs" />
-    <Compile Include="ArticleRepository.cs" />
     <Compile Include="DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,7 +52,6 @@
       <DependentUpon>DetailView.cs</DependentUpon>
     </Compile>
     <Compile Include="DetailViewPresenter.cs" />
-    <Compile Include="IArticleRepository.cs" />
     <Compile Include="IDetailView.cs" />
     <Compile Include="IMainView.cs" />
     <Compile Include="IPresenter.cs" />
@@ -98,6 +95,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{D5A2C5FB-9AAF-49EF-8C8A-B1D98D099006}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{6BEB56C5-3FDF-42C6-BA67-8427A7CEC5B7}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
