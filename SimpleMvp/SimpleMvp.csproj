@@ -46,7 +46,6 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConstructorParameter.cs" />
     <Compile Include="DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
