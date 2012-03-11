@@ -11,7 +11,7 @@ namespace SimpleMvp
 
     public interface IDetailView : IView
     {
-        void ShowDetails(string article);
+        void ShowDetails(string model);
         DialogResult ShowDialog(IWin32Window parent);
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Core;
 using Infrastructure;
+using NHibernate;
 using StructureMap;
 
 namespace SimpleMvp
@@ -14,25 +15,24 @@ namespace SimpleMvp
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var buildSessionFactory = new ConfigurationFactory().Build().BuildSessionFactory();
+
             ObjectFactory.Initialize(x =>
             {
                 x.Scan(s =>
                 {
-                    s.TheCallingAssembly();
+                    s.AssembliesFromApplicationBaseDirectory();
                     s.WithDefaultConventions();
                     s.ConnectImplementationsToTypesClosing(typeof(IPresenter<>));
                 });
-                x.For<IArticleRepository>().Use<ArticleRepository>();
-                x
-                    .For<Func<Type, ConstructorParameter, IPresenter<IView>>>()
-                    .Use((type, param) => (IPresenter<IView>)ObjectFactory
-                                                                  .With(param.ParameterName)
-                                                                  .EqualTo(param.ParameterValue)
+                x.For<ISession>().Use(buildSessionFactory.OpenSession);                
+                x.For<Func<Type, object, IPresenter<IView>>>().Use((type, param) => (IPresenter<IView>)ObjectFactory
+                                                                  .With(param.GetType(), param)
                                                                   .GetInstance(type));
             });
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             using (var mainForm = ObjectFactory.GetInstance<IPresenter<IMainView>>())
             {

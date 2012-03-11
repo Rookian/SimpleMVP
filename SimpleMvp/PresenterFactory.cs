@@ -5,16 +5,16 @@ namespace SimpleMvp
 {
     public class PresenterFactory : IPresenterFactory
     {
-        private readonly Func<Type, ConstructorParameter, IPresenter<IView>> _getPresenter;
+        private readonly Func<Type, object, IPresenter<IView>> _getPresenter;
 
-        public PresenterFactory(Func<Type, ConstructorParameter, IPresenter<IView>> getPresenter)
+        public PresenterFactory(Func<Type, object, IPresenter<IView>> getPresenter)
         {
             _getPresenter = getPresenter;
         }
 
-        public TPresenter Create<TPresenter>(ConstructorParameter constructorParameterArgument) where TPresenter : IPresenter<IView>
+        public TPresenter Create<TPresenter>(object parameter) where TPresenter : IPresenter<IView>
         {
-            return (TPresenter)_getPresenter(typeof(TPresenter), constructorParameterArgument);
+            return (TPresenter)_getPresenter(typeof(TPresenter), parameter);
         }
 
         public void ShowDialog(IDetailView newForm, object parent)

@@ -4,13 +4,13 @@ using NHibernate;
 
 namespace Infrastructure
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public abstract class Repository<T> : IRepository<T> where T : Entity
     {
         private readonly ISession _session;
 
-        protected Repository()
+        public Repository(ISession session)
         {
-            _session = GetSession();
+            _session = session;
         }
 
         public virtual void Delete(T entity)
@@ -36,11 +36,6 @@ namespace Infrastructure
         public void Merge(T entity)
         {
             _session.Merge(entity);
-        }
-
-        protected ISession GetSession()
-        {
-            return new SessionBuilder().GetSession();
         }
     }
 }

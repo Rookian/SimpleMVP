@@ -5,11 +5,11 @@ namespace Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ISessionBuilder _sessionBuilder;
+        private readonly ISession _session;
 
-        public UnitOfWork(ISessionBuilder sessionBuilder)
+        public UnitOfWork(ISession session)
         {
-            _sessionBuilder = sessionBuilder;
+            _session = session;
         }
 
         public void Begin()
@@ -46,7 +46,7 @@ namespace Infrastructure
 
         public ISession GetSession()
         {
-            return _sessionBuilder.GetSession();
+            return _session;
         }
 
         private ITransaction GetTransaction()
