@@ -13,7 +13,6 @@ namespace Core
         {
             var other = obj as Entity;
 
-            // the Id  must be the same to be equal
             if (IsPersistent)
             {
                 return (other != null) && (Id == other.Id);
