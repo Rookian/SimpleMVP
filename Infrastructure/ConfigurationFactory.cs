@@ -7,7 +7,6 @@ namespace Infrastructure
     public class ConfigurationFactory
     {
         private const string Database = "Ariha";
-        //private const string Server = @".\sqlExpress";
         private const string Server = "localhost";
         public Configuration Build()
         {
