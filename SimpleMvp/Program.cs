@@ -9,7 +9,7 @@ namespace SimpleMvp
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application. 
         /// </summary>
         [STAThread]
         static void Main()
@@ -27,7 +27,8 @@ namespace SimpleMvp
                     s.WithDefaultConventions();
                     s.ConnectImplementationsToTypesClosing(typeof(IPresenter<>));
                 });
-                x.For<ISession>().Use(buildSessionFactory.OpenSession);                
+                x.For<ISession>().Use(buildSessionFactory.OpenSession);
+
                 x.For<Func<Type, object, IPresenter<IView>>>().Use((type, param) => (IPresenter<IView>)ObjectFactory
                                                                   .With(param.GetType(), param)
                                                                   .GetInstance(type));
