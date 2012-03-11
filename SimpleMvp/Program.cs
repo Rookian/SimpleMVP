@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Core;
 using Infrastructure;
 using NHibernate;
 using StructureMap;
