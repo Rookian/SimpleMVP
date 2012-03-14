@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleMvp
+namespace Core
 {
     public class Raise
     {

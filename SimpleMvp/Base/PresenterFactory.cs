@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SimpleMvp
+namespace SimpleMvp.Base
 {
     public class PresenterFactory : IPresenterFactory
     {

@@ -46,33 +46,34 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailView.cs">
+    <Compile Include="Base\BindingHelper.cs" />
+    <Compile Include="Views\DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetailView.Designer.cs">
+    <Compile Include="Views\DetailView.Designer.cs">
       <DependentUpon>DetailView.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailViewPresenter.cs" />
-    <Compile Include="IDetailView.cs" />
-    <Compile Include="IMainView.cs" />
-    <Compile Include="IPresenter.cs" />
-    <Compile Include="IPresenterFactory.cs" />
-    <Compile Include="MainView.cs">
+    <Compile Include="Presenter\DetailViewPresenter.cs" />
+    <Compile Include="Base\IDetailView.cs" />
+    <Compile Include="Base\IMainView.cs" />
+    <Compile Include="Base\IPresenter.cs" />
+    <Compile Include="Base\IPresenterFactory.cs" />
+    <Compile Include="Base\IView.cs" />
+    <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainView.Designer.cs">
+    <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainViewPresenter.cs" />
-    <Compile Include="PresenterBase.cs" />
+    <Compile Include="Presenter\MainViewPresenter.cs" />
+    <Compile Include="Base\PresenterBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raise.cs" />
-    <Compile Include="PresenterFactory.cs" />
-    <EmbeddedResource Include="DetailView.resx">
+    <Compile Include="Base\PresenterFactory.cs" />
+    <EmbeddedResource Include="Views\DetailView.resx">
       <DependentUpon>DetailView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainView.resx">
+    <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -87,6 +88,10 @@
     </Compile>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Core.Article.datasource" />
+    <None Include="Properties\DataSources\Core.Entity.datasource" />
+    <None Include="Properties\DataSources\Core.IArticleRepository.datasource" />
+    <None Include="Properties\DataSources\Core.IEntity.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,7 +1,8 @@
 using System;
 using Core;
+using SimpleMvp.Base;
 
-namespace SimpleMvp
+namespace SimpleMvp.Presenter
 {
     public class MainViewPresenter : IPresenter<IMainView>
     {
@@ -16,7 +17,7 @@ namespace SimpleMvp
             _presenterFactory = presenterFactory;
             _view.DetailsClick += View_DetailsClick;
             _view.CloseClick += View_CloseClick;
-            _view.ShowArticles(_articles.GetAll());
+            _view.BindModel(_articles.GetAll());
         }
 
         public IMainView View

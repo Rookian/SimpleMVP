@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleMvp
+namespace SimpleMvp.Base
 {
     public interface IPresenter<out TView> : IPresenter
     {

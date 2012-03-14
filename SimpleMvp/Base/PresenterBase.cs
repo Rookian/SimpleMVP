@@ -1,4 +1,4 @@
-namespace SimpleMvp
+namespace SimpleMvp.Base
 {
     public class PresenterBase : IPresenter
     {

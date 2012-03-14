@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Infrastructure;
 using NHibernate;
+using SimpleMvp.Base;
 using StructureMap;
 
 namespace SimpleMvp

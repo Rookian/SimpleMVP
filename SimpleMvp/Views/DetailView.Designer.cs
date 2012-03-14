@@ -1,4 +1,4 @@
-﻿namespace SimpleMvp
+﻿namespace SimpleMvp.Views
 {
   partial class DetailView
   {

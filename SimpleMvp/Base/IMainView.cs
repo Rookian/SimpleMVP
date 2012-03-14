@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using Core;
 
-namespace SimpleMvp
+namespace SimpleMvp.Base
 {
     public interface IMainView : IView
     {
-        void ShowArticles(IEnumerable<Article> articles);
+        void BindModel(IEnumerable<Article> articles);
         event EventHandler DetailsClick;
-        string GetSelectedArticle();
+        Article GetSelectedArticle();
     }
 }

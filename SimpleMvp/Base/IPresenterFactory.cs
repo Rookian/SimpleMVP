@@ -1,4 +1,4 @@
-namespace SimpleMvp
+namespace SimpleMvp.Base
 {
     public interface IPresenterFactory
     {

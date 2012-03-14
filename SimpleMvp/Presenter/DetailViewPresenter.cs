@@ -1,12 +1,14 @@
 using System;
+using Core;
+using SimpleMvp.Base;
 
-namespace SimpleMvp
+namespace SimpleMvp.Presenter
 {
     public class DetailViewPresenter : IPresenter<IDetailView>
     {
         private readonly IDetailView _view;
 
-        public DetailViewPresenter(IDetailView view, string article)
+        public DetailViewPresenter(IDetailView view, Article article)
         {
             _view = view;
             _view.ShowDetails(article);
