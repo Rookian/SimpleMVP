@@ -46,7 +46,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BindingHelper.cs" />
+    <Compile Include="Common\BindingHelper.cs" />
+    <Compile Include="Model\ArticleViewModel.cs" />
     <Compile Include="Views\DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,10 +67,9 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenter\MainViewPresenter.cs" />
-    <Compile Include="Base\PresenterBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Base\PresenterFactory.cs" />
+    <Compile Include="Presenter\PresenterFactory.cs" />
     <EmbeddedResource Include="Views\DetailView.resx">
       <DependentUpon>DetailView.cs</DependentUpon>
     </EmbeddedResource>

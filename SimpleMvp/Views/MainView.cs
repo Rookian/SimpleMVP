@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using Core;
+using Core.Common;
 using SimpleMvp.Base;
+using SimpleMvp.Common;
+using SimpleMvp.Model;
 
 namespace SimpleMvp.Views
 {
@@ -16,14 +19,14 @@ namespace SimpleMvp.Views
         public event EventHandler DetailsClick;
         public event EventHandler CloseClick;
 
-        public void BindModel(IEnumerable<Article> articles)
+        public void BindModel(IEnumerable<ArticleViewModel> articles)
         {
-            lbxArticles.SetDisplayAndValueMember(articles, x => x.Name, x => x.Id);
+            lbxArticles.SetDisplayAndValueMember(articles.ToList(), x => x.Name, x => x.Id);
         }
 
-        public Article GetSelectedArticle()
+        public ArticleViewModel GetSelectedArticle()
         {
-            return lbxArticles.SelectedItem as Article;
+            return lbxArticles.SelectedItem as ArticleViewModel;
         }
 
         private void btnDetails_Click(object sender, EventArgs e)

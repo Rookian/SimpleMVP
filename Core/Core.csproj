@@ -35,13 +35,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="IArticleRepository.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="Domain\Article.cs" />
+    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Repository\IArticleRepository.cs" />
+    <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Raise.cs" />
+    <Compile Include="Common\Raise.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,23 +1,25 @@
 using System;
-using Core;
+using System.Linq;
+using Core.Repository;
 using SimpleMvp.Base;
+using SimpleMvp.Model;
 
 namespace SimpleMvp.Presenter
 {
     public class MainViewPresenter : IPresenter<IMainView>
     {
-        private readonly IArticleRepository _articles;
+        private readonly IArticleRepository _articlesRepository;
         private readonly IPresenterFactory _presenterFactory;
         private readonly IMainView _view;
 
-        public MainViewPresenter(IMainView view, IArticleRepository articles, IPresenterFactory presenterFactory)
+        public MainViewPresenter(IMainView view, IArticleRepository articlesRepository, IPresenterFactory presenterFactory)
         {
             _view = view;
-            _articles = articles;
+            _articlesRepository = articlesRepository;
             _presenterFactory = presenterFactory;
             _view.DetailsClick += View_DetailsClick;
             _view.CloseClick += View_CloseClick;
-            _view.BindModel(_articles.GetAll());
+            _view.BindModel(_articlesRepository.GetAll().Select(x => new ArticleViewModel { Id = x.Id, Name = x.Name }));
         }
 
         public IMainView View

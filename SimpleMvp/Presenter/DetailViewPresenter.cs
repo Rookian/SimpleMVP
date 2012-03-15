@@ -1,6 +1,6 @@
 using System;
-using Core;
 using SimpleMvp.Base;
+using SimpleMvp.Model;
 
 namespace SimpleMvp.Presenter
 {
@@ -8,10 +8,10 @@ namespace SimpleMvp.Presenter
     {
         private readonly IDetailView _view;
 
-        public DetailViewPresenter(IDetailView view, Article article)
+        public DetailViewPresenter(IDetailView view, ArticleViewModel article)
         {
             _view = view;
-            _view.ShowDetails(article);
+            _view.ShowDetails(new ArticleViewModel { Id = article.Id, Name = article.Name });
             _view.CloseClick += View_CloseClick;
         }
 

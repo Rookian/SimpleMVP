@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Core;
 using SimpleMvp.Base;
+using SimpleMvp.Model;
 
 namespace SimpleMvp.Views
 {
@@ -17,7 +17,7 @@ namespace SimpleMvp.Views
 
         public event EventHandler CloseClick;
 
-        public void ShowDetails(Article article)
+        public void ShowDetails(ArticleViewModel article)
         {
             lblLabel.Text = article.Name;
         }

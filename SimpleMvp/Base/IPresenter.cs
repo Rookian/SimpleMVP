@@ -2,13 +2,8 @@ using System;
 
 namespace SimpleMvp.Base
 {
-    public interface IPresenter<out TView> : IPresenter
+    public interface IPresenter<out TView> :  IDisposable
     {
         TView View { get; }
-    }
-
-    public interface IPresenter : IDisposable
-    {
-        
     }
 }

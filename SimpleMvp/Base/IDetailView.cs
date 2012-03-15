@@ -1,11 +1,11 @@
 using System.Windows.Forms;
-using Core;
+using SimpleMvp.Model;
 
 namespace SimpleMvp.Base
 {
     public interface IDetailView : IView
     {
-        void ShowDetails(Article model);
+        void ShowDetails(ArticleViewModel model);
         DialogResult ShowDialog(IWin32Window parent);
     }
 }
