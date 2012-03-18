@@ -1,6 +1,6 @@
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Infrastructure.Mapping;
+using Infrastructure.Mappings;
 using NHibernate.Cfg;
 
 namespace Infrastructure.Nhibernate

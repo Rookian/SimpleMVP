@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using SimpleMvp.Base;
-using SimpleMvp.Model;
+using Core.Common;
+using SimpleMvp.Bases;
+using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Views
 {
@@ -24,10 +25,7 @@ namespace SimpleMvp.Views
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            if (CloseClick != null)
-            {
-                CloseClick(this, e);
-            }
+            Raise.Event(CloseClick, this, e);
         }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Core.Common;
-using SimpleMvp.Base;
+using SimpleMvp.Bases;
 using SimpleMvp.Common;
-using SimpleMvp.Model;
+using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Views
 {
@@ -18,6 +18,8 @@ namespace SimpleMvp.Views
 
         public event EventHandler DetailsClick;
         public event EventHandler CloseClick;
+        public event EventHandler CreateClick;
+        public event EventHandler DeleteClick;
 
         public void BindModel(IEnumerable<ArticleViewModel> articles)
         {
@@ -41,7 +43,17 @@ namespace SimpleMvp.Views
 
         private void lbxArticles_DoubleClick(object sender, EventArgs e)
         {
-            btnDetails_Click(sender, e);
+            Raise.Event(DetailsClick, this, e);
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            Raise.Event(CreateClick, sender, e);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Raise.Event(DeleteClick, sender, e);
         }
     }
 }
