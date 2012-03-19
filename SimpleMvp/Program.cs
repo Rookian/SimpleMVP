@@ -26,23 +26,24 @@ namespace SimpleMvp
                                                         {
                                                             s.AssembliesFromApplicationBaseDirectory();
                                                             s.WithDefaultConventions();
-                                                            s.ConnectImplementationsToTypesClosing(typeof(IPresenter<>));
+                                                            s.ConnectImplementationsToTypesClosing(typeof (IPresenter<>));
                                                         });
 
                                              x.For<ISession>().Use(buildSessionFactory.OpenSession);
 
                                              // Get internal Presenter Factory with Ctor Parameter
                                              x.For<Func<Type, object, IPresenter<IView>>>().Use(
-                                                 (type, param) => (IPresenter<IView>)ObjectFactory
+                                                 (type, param) => (IPresenter<IView>) ObjectFactory
                                                                                           .With(param.GetType(), param)
                                                                                           .GetInstance(type));
                                              // Get internal Presenter Factory without Ctor Parameter
-                                             x.For<Func<Type, IPresenter<IView>>>().Use(type => (IPresenter<IView>)ObjectFactory.GetInstance(type));
+                                             x.For<Func<Type, IPresenter<IView>>>().Use(
+                                                 type => (IPresenter<IView>) ObjectFactory.GetInstance(type));
                                          });
 
             using (var mainForm = ObjectFactory.GetInstance<IPresenter<IMainView>>())
             {
-                Application.Run((Form)mainForm.View);
+                Application.Run((Form) mainForm.View);
             }
         }
     }

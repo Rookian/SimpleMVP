@@ -19,6 +19,18 @@ namespace SimpleMvp.Common
                                      DataSourceUpdateMode.OnPropertyChanged);
         }
 
+        public static void Bind<TModel>(this TextBox textBox, TModel model,
+                                Expression<Func<TModel, object>> displayMember, Expression<Func<TModel, object>> valueMember)
+        {
+            textBox.DataBindings.Add("Text", model, Name(displayMember), true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox.Tag = model;
+        }
+
+        public static TModel Model<TModel>(this TextBox textBox) where TModel : class
+        {
+            return textBox.Tag as TModel;
+        }
+
         public static void Bind<TModel>(this Label control, BindingSource bindingSource,
                                         Expression<Func<TModel, object>> dataMember)
         {
@@ -82,15 +94,15 @@ namespace SimpleMvp.Common
             switch (expression.NodeType)
             {
                 case ExpressionType.MemberAccess:
-                    var memberExpression = (MemberExpression) expression;
+                    var memberExpression = (MemberExpression)expression;
                     var supername = GetMemberName(memberExpression.Expression);
                     if (String.IsNullOrEmpty(supername)) return memberExpression.Member.Name;
                     return String.Concat(supername, '.', memberExpression.Member.Name);
                 case ExpressionType.Call:
-                    var callExpression = (MethodCallExpression) expression;
+                    var callExpression = (MethodCallExpression)expression;
                     return callExpression.Method.Name;
                 case ExpressionType.Convert:
-                    var unaryExpression = (UnaryExpression) expression;
+                    var unaryExpression = (UnaryExpression)expression;
                     return GetMemberName(unaryExpression.Operand);
                 case ExpressionType.Parameter:
                 case ExpressionType.Constant: //Change

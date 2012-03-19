@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using Core.Common;
 using SimpleMvp.Bases;
+using SimpleMvp.Common;
+using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Views
 {
@@ -14,9 +16,14 @@ namespace SimpleMvp.Views
 
         public event EventHandler CloseClick;
 
-        public string GetArticleName()
+        public void BindModel(ArticleViewModel viewModel)
         {
-            return tbName.Text;
+            tbName.Bind(viewModel, x => x.Name, x => x.Id);
+        }
+
+        public ArticleViewModel GetArticle()
+        {
+            return tbName.Model<ArticleViewModel>();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

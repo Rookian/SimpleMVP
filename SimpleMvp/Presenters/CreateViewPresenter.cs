@@ -2,33 +2,33 @@
 using Core.DomainModels;
 using Core.Repositories;
 using SimpleMvp.Bases;
+using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Presenters
 {
     public class CreateViewPresenter : Presenter<ICreateView>
     {
-        private readonly ICreateView _view;
         private readonly IArticleRepository _articleRepository;
 
         public CreateViewPresenter(ICreateView view, IArticleRepository articleRepository)
             : base(view)
         {
-            _view = view;
             _articleRepository = articleRepository;
-            view.CloseClick += SaveClick;
+            View.CloseClick += SaveClick;
+            View.BindModel(new ArticleViewModel());
         }
 
         private void SaveClick(object sender, EventArgs e)
         {
-            var articleName = _view.GetArticleName();
+            var articleViewModel = View.GetArticle();
 
-            _articleRepository.SaveOrUpdate(new Article { Name = articleName });
-            _view.Close();
+            _articleRepository.SaveOrUpdate(new Article { Name = articleViewModel.Name, Id = articleViewModel.Id });
+            View.Close();
         }
 
         public override void Dispose()
         {
-            _view.CloseClick -= SaveClick;
+            View.CloseClick -= SaveClick;
         }
     }
 }

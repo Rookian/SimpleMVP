@@ -1,7 +1,10 @@
+using SimpleMvp.ViewModels;
+
 namespace SimpleMvp.Bases
 {
     public interface ICreateView : IView
     {
-        string GetArticleName();
+        ArticleViewModel GetArticle();
+        void BindModel(ArticleViewModel viewModel);
     }
 }

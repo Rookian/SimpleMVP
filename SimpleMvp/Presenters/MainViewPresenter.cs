@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Core.Repositories;
+using Infrastructure.Nhibernate;
 using SimpleMvp.Bases;
 using SimpleMvp.ViewModels;
 
@@ -9,18 +10,21 @@ namespace SimpleMvp.Presenters
     public class MainViewPresenter : Presenter<IMainView>
     {
         private readonly IArticleRepository _articlesRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IPresenterFactory _presenterFactory;
 
-        public MainViewPresenter(IMainView view, IArticleRepository articlesRepository, IPresenterFactory presenterFactory)
+        public MainViewPresenter(IMainView view, IArticleRepository articlesRepository, IUnitOfWork unitOfWork, IPresenterFactory presenterFactory)
             : base(view)
         {
             _articlesRepository = articlesRepository;
+            _unitOfWork = unitOfWork;
             _presenterFactory = presenterFactory;
 
             View.DetailsClick += View_DetailsClick;
             View.CloseClick += View_CloseClick;
             View.CreateClick += View_CreateClick;
             View.DeleteClick += View_DeleteClick;
+            _unitOfWork.Begin();
             View.BindModel(_articlesRepository.GetAll().Select(x => new ArticleViewModel { Id = x.Id, Name = x.Name }));
         }
 
@@ -35,6 +39,7 @@ namespace SimpleMvp.Presenters
             var selectedArticle = View.GetSelectedArticle();
             var article = _articlesRepository.GetById(selectedArticle.Id);
             _articlesRepository.Delete(article);
+            _unitOfWork.Commit();
         }
 
         private void View_CreateClick(object sender, EventArgs e)
