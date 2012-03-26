@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleMvp.Bases
+namespace SimpleMvp.Infrastructure.Bases
 {
     public interface IPresenter<out TView> : IDisposable
     {

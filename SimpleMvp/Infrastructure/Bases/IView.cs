@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace SimpleMvp.Bases
+namespace SimpleMvp.Infrastructure.Bases
 {
     public interface IView : IDisposable
     {

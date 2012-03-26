@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Windows.Forms;
 
-namespace SimpleMvp.Common
+namespace SimpleMvp.Infrastructure
 {
     public static class BindingHelper
     {
@@ -20,7 +20,7 @@ namespace SimpleMvp.Common
         }
 
         public static void Bind<TModel>(this TextBox textBox, TModel model,
-                                Expression<Func<TModel, object>> displayMember, Expression<Func<TModel, object>> valueMember)
+                                        Expression<Func<TModel, object>> displayMember, Expression<Func<TModel, object>> valueMember)
         {
             textBox.DataBindings.Add("Text", model, Name(displayMember), true, DataSourceUpdateMode.OnPropertyChanged);
             textBox.Tag = model;
@@ -89,20 +89,20 @@ namespace SimpleMvp.Common
             return GetMemberName(expression.Body);
         }
 
-        private static string GetMemberName(Expression expression)
+        static string GetMemberName(Expression expression)
         {
             switch (expression.NodeType)
             {
                 case ExpressionType.MemberAccess:
-                    var memberExpression = (MemberExpression)expression;
-                    var supername = GetMemberName(memberExpression.Expression);
+                    var memberExpression = (MemberExpression) expression;
+                    string supername = GetMemberName(memberExpression.Expression);
                     if (String.IsNullOrEmpty(supername)) return memberExpression.Member.Name;
                     return String.Concat(supername, '.', memberExpression.Member.Name);
                 case ExpressionType.Call:
-                    var callExpression = (MethodCallExpression)expression;
+                    var callExpression = (MethodCallExpression) expression;
                     return callExpression.Method.Name;
                 case ExpressionType.Convert:
-                    var unaryExpression = (UnaryExpression)expression;
+                    var unaryExpression = (UnaryExpression) expression;
                     return GetMemberName(unaryExpression.Operand);
                 case ExpressionType.Parameter:
                 case ExpressionType.Constant: //Change

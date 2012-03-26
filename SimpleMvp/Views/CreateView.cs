@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Core.Common;
 using SimpleMvp.Bases;
-using SimpleMvp.Common;
+using SimpleMvp.Infrastructure;
 using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Views
@@ -26,7 +26,7 @@ namespace SimpleMvp.Views
             return tbName.Model<ArticleViewModel>();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        void btnSave_Click(object sender, EventArgs e)
         {
             Raise.Event(CloseClick, this, e);
         }

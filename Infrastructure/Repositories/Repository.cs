@@ -7,9 +7,9 @@ namespace Infrastructure.Repositories
 {
     public abstract class Repository<T> : IRepository<T> where T : Entity
     {
-        private readonly ISession _session;
+        readonly ISession _session;
 
-        public Repository(ISession session)
+        protected Repository(ISession session)
         {
             _session = session;
         }

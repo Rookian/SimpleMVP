@@ -1,3 +1,4 @@
+using SimpleMvp.Infrastructure.Bases;
 using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Bases

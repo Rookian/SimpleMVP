@@ -23,7 +23,7 @@ namespace SimpleMvp.Views
             lblLabel.Text = article.Name;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        void btnClose_Click(object sender, EventArgs e)
         {
             Raise.Event(CloseClick, this, e);
         }

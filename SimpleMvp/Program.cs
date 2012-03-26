@@ -3,7 +3,8 @@ using System.Windows.Forms;
 using Infrastructure.Nhibernate;
 using NHibernate;
 using SimpleMvp.Bases;
-using SimpleMvp.Common;
+using SimpleMvp.Infrastructure;
+using SimpleMvp.Infrastructure.Bases;
 using StructureMap;
 
 namespace SimpleMvp
@@ -14,7 +15,7 @@ namespace SimpleMvp
         /// The main entry point for the application. 
         /// </summary>
         [STAThread]
-        private static void Main()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

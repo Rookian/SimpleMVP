@@ -48,9 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bases\IPresenterFactoryForMainViewPresenter.cs" />
-    <Compile Include="Bases\Presenter.cs" />
+    <Compile Include="Infrastructure\Presenter.cs" />
     <Compile Include="PresenterFactories\PresenterFactoryForMainViewPresenter.cs" />
-    <Compile Include="Common\BindingHelper.cs" />
+    <Compile Include="Infrastructure\BindingHelper.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Presenters\CreateViewPresenter.cs" />
     <Compile Include="Bases\ICreateView.cs" />
@@ -69,9 +69,9 @@
     <Compile Include="Presenters\DetailViewPresenter.cs" />
     <Compile Include="Bases\IDetailView.cs" />
     <Compile Include="Bases\IMainView.cs" />
-    <Compile Include="Bases\IPresenter.cs" />
-    <Compile Include="Bases\IPresenterFactory.cs" />
-    <Compile Include="Bases\IView.cs" />
+    <Compile Include="Infrastructure\Bases\IPresenter.cs" />
+    <Compile Include="Infrastructure\Bases\IPresenterFactory.cs" />
+    <Compile Include="Infrastructure\Bases\IView.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,7 +81,7 @@
     <Compile Include="Presenters\MainViewPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\PresenterFactory.cs" />
+    <Compile Include="Infrastructure\PresenterFactory.cs" />
     <EmbeddedResource Include="Views\CreateView.resx">
       <DependentUpon>CreateView.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,23 +1,16 @@
-using System;
+using Core.Common;
 using NHibernate;
 
 namespace Infrastructure.Nhibernate
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ISession _session;
+        readonly ISession _session;
 
         public UnitOfWork(ISession session)
         {
             _session = session;
-        }
-
-        public void Begin()
-        {
-            if (ThereIsATransactionInProgress())
-            {
-                GetTransaction().Dispose();
-            }
+            Ensure.That(session).IsNotNull();
 
             _session.BeginTransaction();
         }
@@ -38,25 +31,12 @@ namespace Infrastructure.Nhibernate
         public void Commit()
         {
             var transaction = GetTransaction();
-            if (!transaction.IsActive)
-                throw new InvalidOperationException("Must call Start() on the unit of work before committing");
-
             transaction.Commit();
         }
 
-        public ISession GetSession()
-        {
-            return _session;
-        }
-
-        private ITransaction GetTransaction()
+        ITransaction GetTransaction()
         {
             return _session.Transaction;
-        }
-
-        private bool ThereIsATransactionInProgress()
-        {
-            return GetTransaction().IsActive || GetTransaction().WasCommitted || GetTransaction().WasRolledBack;
         }
     }
 }

@@ -2,12 +2,16 @@ namespace Core.DomainModels
 {
     public abstract class Entity : IEntity
     {
-        public virtual int Id { get; set; }
-
-        public virtual bool IsPersistent
+        protected bool IsPersistent
         {
             get { return IsPersistentObject(); }
         }
+
+        #region IEntity Members
+
+        public virtual int Id { get; set; }
+
+        #endregion
 
         public override bool Equals(object obj)
         {
@@ -25,7 +29,7 @@ namespace Core.DomainModels
             return IsPersistentObject() ? Id.GetHashCode() : base.GetHashCode();
         }
 
-        private bool IsPersistentObject()
+        bool IsPersistentObject()
         {
             return (Id != 0);
         }

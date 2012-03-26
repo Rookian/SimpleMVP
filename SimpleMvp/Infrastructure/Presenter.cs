@@ -1,17 +1,22 @@
 using System.Windows.Forms;
+using Core.Common;
 using Infrastructure.Nhibernate;
+using SimpleMvp.Infrastructure.Bases;
 
-namespace SimpleMvp.Bases
+namespace SimpleMvp.Infrastructure
 {
-    public abstract class Presenter<TView> : IPresenter<TView>
+    public abstract class Presenter<TView> : IPresenter<TView> where TView : class, IView
     {
-        private readonly TView _currentView;
+        readonly TView _currentView;
         readonly IUnitOfWork _unitOfWork;
 
         protected Presenter(TView currentView, IUnitOfWork unitOfWork)
         {
             _currentView = currentView;
             _unitOfWork = unitOfWork;
+
+            Ensure.That(currentView).IsNotNull();
+            Ensure.That(unitOfWork).IsNotNull();
         }
 
         public TView CurrentView
@@ -24,9 +29,9 @@ namespace SimpleMvp.Bases
             _unitOfWork.Dispose();
         }
 
-        protected  void ShowDialog(IView newForm, object parent)
+        protected void ShowDialog(IView newForm, object parent)
         {
-            newForm.ShowDialog((IWin32Window)parent);
+            newForm.ShowDialog((IWin32Window) parent);
         }
     }
 }

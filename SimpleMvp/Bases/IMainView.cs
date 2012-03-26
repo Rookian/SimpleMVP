@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SimpleMvp.Infrastructure.Bases;
 using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Bases

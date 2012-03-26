@@ -1,4 +1,6 @@
-﻿namespace SimpleMvp.Bases
+﻿using SimpleMvp.Infrastructure.Bases;
+
+namespace SimpleMvp.Bases
 {
     public interface IPresenterFactoryForMainViewPresenter
     {

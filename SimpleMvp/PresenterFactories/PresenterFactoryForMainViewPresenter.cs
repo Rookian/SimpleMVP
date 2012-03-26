@@ -1,4 +1,5 @@
 using SimpleMvp.Bases;
+using SimpleMvp.Infrastructure.Bases;
 
 namespace SimpleMvp.PresenterFactories
 {
