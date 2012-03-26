@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{112C078B-F3E7-4B56-9CA8-16F45926036E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SimpleMvp</RootNamespace>
     <AssemblyName>SimpleMvp</AssemblyName>
@@ -34,17 +34,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bases\IPresenterFactoryForMainViewPresenter.cs" />
@@ -79,7 +76,6 @@
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenters\MainViewPresenter.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\PresenterFactory.cs" />
     <EmbeddedResource Include="Views\CreateView.resx">
@@ -123,10 +119,6 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{D5A2C5FB-9AAF-49EF-8C8A-B1D98D099006}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{6BEB56C5-3FDF-42C6-BA67-8427A7CEC5B7}</Project>
-      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

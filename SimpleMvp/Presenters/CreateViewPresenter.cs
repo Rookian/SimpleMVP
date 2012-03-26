@@ -1,8 +1,8 @@
 ﻿using System;
+using Core;
 using Core.Common;
 using Core.DomainModels;
 using Core.Repositories;
-using Infrastructure.Nhibernate;
 using SimpleMvp.Bases;
 using SimpleMvp.Infrastructure;
 using SimpleMvp.ViewModels;

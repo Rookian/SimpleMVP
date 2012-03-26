@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.Nhibernate
+namespace Core
 {
     public interface IUnitOfWork : IDisposable
     {

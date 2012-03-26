@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Mappings\ArticleMapping.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
-    <Compile Include="Nhibernate\IUnitOfWork.cs" />
     <Compile Include="Nhibernate\ConfigurationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Repository.cs" />

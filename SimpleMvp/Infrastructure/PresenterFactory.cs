@@ -1,4 +1,5 @@
 using System;
+using Core.Common;
 using SimpleMvp.Infrastructure.Bases;
 
 namespace SimpleMvp.Infrastructure
@@ -13,6 +14,9 @@ namespace SimpleMvp.Infrastructure
         {
             _getPresenterWithCtorParameter = getPresenterWithCtorParameter;
             _getPresenter = getPresenter;
+
+            Ensure.That(getPresenter).IsNotNull();
+            Ensure.That(getPresenterWithCtorParameter).IsNotNull();
         }
 
         public TPresenter Create(object ctorParameter)

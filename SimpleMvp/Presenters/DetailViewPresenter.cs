@@ -1,5 +1,6 @@
 using System;
-using Infrastructure.Nhibernate;
+using Core;
+using Core.Common;
 using SimpleMvp.Bases;
 using SimpleMvp.Infrastructure;
 using SimpleMvp.ViewModels;
@@ -9,10 +10,16 @@ namespace SimpleMvp.Presenters
     public class DetailViewPresenter : Presenter<IDetailView>
     {
         readonly IDetailView _currentView;
+        ArticleViewModel _article;
 
         public DetailViewPresenter(IDetailView currentView, ArticleViewModel article, IUnitOfWork unitOfWork) : base(currentView, unitOfWork)
         {
+            _article = article;
             _currentView = currentView;
+
+            Ensure.That(article).IsNotNull();
+            Ensure.That(currentView).IsNotNull();
+
             _currentView.ShowDetails(new ArticleViewModel {Id = article.Id, Name = article.Name});
             _currentView.CloseClick += CurrentViewCloseClick;
         }

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0933D3DC-FE3C-4C7C-8632-1B73C9150039}</ProjectGuid>
+    <ProjectGuid>{6F5CC82A-B9B3-4DD7-9796-03C1290748ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleMVP.UnitTests</RootNamespace>
-    <AssemblyName>SimpleMVP.UnitTests</AssemblyName>
+    <RootNamespace>SimpleMVP.IntegrationTests</RootNamespace>
+    <AssemblyName>SimpleMVP.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.2.5.2\lib\NET35\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="FakeItEasy, Version=1.7.4257.42, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
       <HintPath>..\packages\FakeItEasy.1.7.4257.42\lib\NET40\FakeItEasy.dll</HintPath>
     </Reference>
@@ -38,26 +41,37 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Machine.Specifications.0.5.5.0\lib\net40\Machine.Specifications.dll</HintPath>
     </Reference>
+    <Reference Include="Machine.Specifications.Clr4">
+      <HintPath>..\packages\Machine.Specifications.0.5.5.0\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper.cs" />
     <Compile Include="PresenterFactorySpecs.cs" />
-    <Compile Include="PresenterSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CompositionRoot\CompositionRoot.csproj">
+      <Project>{91FBC8E8-A758-4F0E-930D-540BEEE424B6}</Project>
+      <Name>CompositionRoot</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{D5A2C5FB-9AAF-49EF-8C8A-B1D98D099006}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{6BEB56C5-3FDF-42C6-BA67-8427A7CEC5B7}</Project>
-      <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SimpleMvp\SimpleMvp.csproj">
       <Project>{112C078B-F3E7-4B56-9CA8-16F45926036E}</Project>

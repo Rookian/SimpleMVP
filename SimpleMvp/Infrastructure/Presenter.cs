@@ -1,6 +1,6 @@
 using System.Windows.Forms;
+using Core;
 using Core.Common;
-using Infrastructure.Nhibernate;
 using SimpleMvp.Infrastructure.Bases;
 
 namespace SimpleMvp.Infrastructure

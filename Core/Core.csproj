@@ -38,6 +38,7 @@
     <Compile Include="Common\Ensure.cs" />
     <Compile Include="DomainModels\Article.cs" />
     <Compile Include="DomainModels\Entity.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Repositories\IArticleRepository.cs" />
     <Compile Include="DomainModels\IEntity.cs" />
     <Compile Include="Repositories\IRepository.cs" />

@@ -1,7 +1,6 @@
-﻿using FakeItEasy;
-using Infrastructure.Nhibernate;
+﻿using Core;
+using FakeItEasy;
 using Machine.Specifications;
-using NHibernate;
 using SimpleMvp.Infrastructure;
 using SimpleMvp.Infrastructure.Bases;
 
@@ -13,18 +12,35 @@ namespace SimpleMVP.UnitTests
         static IUnitOfWork UnitOfWork;
         static Presenter<IView> Presenter;
         static IView View;
-        static ISession Session;
 
         Establish context = () =>
-                                {
-                                    Session = A.Fake<ISession>();
-                                    UnitOfWork = A.Fake<UnitOfWork>(a => new UnitOfWork(Session));
-                                    View = A.Fake<IView>();
-                                    Presenter = A.Fake<Presenter<IView>>();
-                                };
+        {
+            UnitOfWork = A.Fake<IUnitOfWork>();
+            View = A.Fake<IView>();
+            Presenter = new TestPresenter(View, UnitOfWork);
+        };
 
         Because of = () => Presenter.Dispose();
 
         It should_dispose_the_unit_of_work = () => A.CallTo(() => UnitOfWork.Dispose()).MustHaveHappened();
+    }
+
+    [Subject(typeof (Presenter<>))]
+    public class When_injecting_a_view_into_the_presenter
+    {
+        static IUnitOfWork UnitOfWork;
+        static Presenter<IView> Presenter;
+        static IView View;
+
+        Establish context = () =>
+        {
+            UnitOfWork = A.Fake<IUnitOfWork>();
+            View = A.Fake<IView>();
+
+        };
+
+        Because of = () => { Presenter = new TestPresenter(View, UnitOfWork); };
+
+        It should_return_the_injected_View = () => Presenter.CurrentView.ShouldEqual(View);
     }
 }
