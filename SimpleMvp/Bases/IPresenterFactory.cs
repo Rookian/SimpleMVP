@@ -1,8 +1,8 @@
 namespace SimpleMvp.Bases
 {
-    public interface IPresenterFactory
+    public interface IPresenterFactory<out TPresenter> where TPresenter : IPresenter<IView>
     {
-        TPresenter Create<TPresenter>(object ctorParameter) where TPresenter : IPresenter<IView>;
-        TPresenter Create<TPresenter>();
+        TPresenter Create(object ctorParameter);
+        TPresenter Create();
     }
 }

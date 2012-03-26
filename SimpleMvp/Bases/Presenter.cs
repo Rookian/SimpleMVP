@@ -1,24 +1,30 @@
 using System.Windows.Forms;
+using Infrastructure.Nhibernate;
 
 namespace SimpleMvp.Bases
 {
     public abstract class Presenter<TView> : IPresenter<TView>
     {
-        private readonly TView _view;
+        private readonly TView _currentView;
+        readonly IUnitOfWork _unitOfWork;
 
-        protected Presenter(TView view)
+        protected Presenter(TView currentView, IUnitOfWork unitOfWork)
         {
-            _view = view;
+            _currentView = currentView;
+            _unitOfWork = unitOfWork;
         }
 
-        public TView View
+        public TView CurrentView
         {
-            get { return _view; }
+            get { return _currentView; }
         }
 
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+            _unitOfWork.Dispose();
+        }
 
-        protected void ShowDialog(IView newForm, object parent)
+        protected  void ShowDialog(IView newForm, object parent)
         {
             newForm.ShowDialog((IWin32Window)parent);
         }

@@ -19,7 +19,7 @@ namespace Infrastructure.Nhibernate
                 GetTransaction().Dispose();
             }
 
-            GetSession().BeginTransaction();
+            _session.BeginTransaction();
         }
 
         public void RollBack()
@@ -32,7 +32,7 @@ namespace Infrastructure.Nhibernate
 
         public void Dispose()
         {
-            GetSession().Dispose();
+            _session.Dispose();
         }
 
         public void Commit()
@@ -51,7 +51,7 @@ namespace Infrastructure.Nhibernate
 
         private ITransaction GetTransaction()
         {
-            return GetSession().Transaction;
+            return _session.Transaction;
         }
 
         private bool ThereIsATransactionInProgress()

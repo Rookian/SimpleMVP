@@ -1,4 +1,5 @@
 using System;
+using Infrastructure.Nhibernate;
 using SimpleMvp.Bases;
 using SimpleMvp.ViewModels;
 
@@ -6,23 +7,23 @@ namespace SimpleMvp.Presenters
 {
     public class DetailViewPresenter : Presenter<IDetailView>
     {
-        private readonly IDetailView _view;
+        private readonly IDetailView _currentView;
 
-        public DetailViewPresenter(IDetailView view, ArticleViewModel article) : base(view)
+        public DetailViewPresenter(IDetailView currentView, ArticleViewModel article, IUnitOfWork unitOfWork) : base(currentView, unitOfWork)
         {
-            _view = view;
-            _view.ShowDetails(new ArticleViewModel { Id = article.Id, Name = article.Name });
-            _view.CloseClick += View_CloseClick;
+            _currentView = currentView;
+            _currentView.ShowDetails(new ArticleViewModel { Id = article.Id, Name = article.Name });
+            _currentView.CloseClick += CurrentViewCloseClick;
         }
 
-        private void View_CloseClick(object sender, EventArgs eventArgs)
+        private void CurrentViewCloseClick(object sender, EventArgs eventArgs)
         {
-            _view.Close();
+            _currentView.Close();
         }
 
         public override void Dispose()
         {
-            _view.CloseClick -= View_CloseClick;
+            _currentView.CloseClick -= CurrentViewCloseClick;
         }
     }
 }

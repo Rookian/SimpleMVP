@@ -8,7 +8,7 @@ namespace Infrastructure.Nhibernate
     public class ConfigurationFactory
     {
         private const string Database = "Ariha";
-        private const string Server = "localhost";
+        private const string Server = @"localhost\sqlexpress";
 
         public Configuration Build()
         {

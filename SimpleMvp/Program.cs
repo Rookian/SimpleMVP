@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Infrastructure.Nhibernate;
 using NHibernate;
 using SimpleMvp.Bases;
+using SimpleMvp.Common;
 using StructureMap;
 
 namespace SimpleMvp
@@ -29,6 +30,8 @@ namespace SimpleMvp
                                                             s.ConnectImplementationsToTypesClosing(typeof (IPresenter<>));
                                                         });
 
+                                             x.For(typeof (IPresenterFactory<>)).Use(typeof (PresenterFactory<>));
+
                                              x.For<ISession>().Use(buildSessionFactory.OpenSession);
 
                                              // Get internal Presenter Factory with Ctor Parameter
@@ -43,7 +46,7 @@ namespace SimpleMvp
 
             using (var mainForm = ObjectFactory.GetInstance<IPresenter<IMainView>>())
             {
-                Application.Run((Form) mainForm.View);
+                Application.Run((Form) mainForm.CurrentView);
             }
         }
     }

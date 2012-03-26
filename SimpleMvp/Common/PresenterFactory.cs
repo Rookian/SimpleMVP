@@ -3,7 +3,7 @@ using SimpleMvp.Bases;
 
 namespace SimpleMvp.Common
 {
-    public class PresenterFactory : IPresenterFactory
+    public class PresenterFactory<TPresenter> : IPresenterFactory<TPresenter> where TPresenter : IPresenter<IView>
     {
         private readonly Func<Type, object, IPresenter<IView>> _getPresenterWithCtorParameter;
         private readonly Func<Type, IPresenter<IView>> _getPresenter;
@@ -15,12 +15,12 @@ namespace SimpleMvp.Common
             _getPresenter = getPresenter;
         }
 
-        public TPresenter Create<TPresenter>(object ctorParameter) where TPresenter : IPresenter<IView>
+        public TPresenter Create(object ctorParameter) 
         {
             return (TPresenter) _getPresenterWithCtorParameter(typeof (TPresenter), ctorParameter);
         }
 
-        public TPresenter Create<TPresenter>()
+        public TPresenter Create()
         {
             return (TPresenter) _getPresenter(typeof(TPresenter));
         } 
