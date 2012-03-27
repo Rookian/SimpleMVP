@@ -1,4 +1,5 @@
 ﻿using CompositionRoot;
+using Core.Common;
 using Machine.Specifications;
 using SimpleMvp.Bases;
 using SimpleMvp.Infrastructure;

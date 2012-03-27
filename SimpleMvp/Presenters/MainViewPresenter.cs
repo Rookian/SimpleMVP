@@ -28,7 +28,7 @@ namespace SimpleMvp.Presenters
             Ensure.That(presenterFactory).IsNotNull();
 
             CurrentView.DetailsClick += View_DetailsClick;
-            CurrentView.CloseClick += View_CloseClick;
+            CurrentView.CloseClick += ViewCloseClick;
             CurrentView.CreateClick += View_CreateClick;
             CurrentView.DeleteClick += View_DeleteClick;
 
@@ -40,7 +40,7 @@ namespace SimpleMvp.Presenters
             base.Dispose();
 
             CurrentView.DetailsClick += View_DetailsClick;
-            CurrentView.CloseClick += View_CloseClick;
+            CurrentView.CloseClick += ViewCloseClick;
             CurrentView.CreateClick += View_CreateClick;
             CurrentView.DeleteClick += View_DeleteClick;
         }
@@ -61,7 +61,7 @@ namespace SimpleMvp.Presenters
             }
         }
 
-        void View_CloseClick(object sender, EventArgs e)
+        void ViewCloseClick(object sender, EventArgs e)
         {
             CurrentView.Close();
         }

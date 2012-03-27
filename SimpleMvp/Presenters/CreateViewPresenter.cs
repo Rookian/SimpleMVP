@@ -31,7 +31,7 @@ namespace SimpleMvp.Presenters
         {
             var articleViewModel = CurrentView.GetArticle();
 
-            _articleRepository.SaveOrUpdate(new Article {Name = articleViewModel.Name, Id = articleViewModel.Id});
+            _articleRepository.SaveOrUpdate(new Article { Name = articleViewModel.Name });
             _unitOfWork.Commit();
             CurrentView.Close();
         }
