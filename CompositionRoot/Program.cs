@@ -21,7 +21,7 @@ namespace CompositionRoot
             BootsTrapper.Boot();
 
             var repo = ObjectFactory.GetInstance<IArticleRepository>();
-            var result = repo.GetByDescription("Alex");
+            //var result = repo.GetByDescription("Alex");
 
             using (var mainForm = ObjectFactory.GetInstance<IPresenter<IMainView>>())
             {

@@ -78,6 +78,9 @@
     <Compile Include="Presenters\MainViewPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\PresenterFactory.cs" />
+    <Compile Include="Views\ViewBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Views\CreateView.resx">
       <DependentUpon>CreateView.cs</DependentUpon>
     </EmbeddedResource>

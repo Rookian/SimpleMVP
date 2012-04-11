@@ -19,9 +19,11 @@ namespace SimpleMvp.Infrastructure
             Ensure.That(getPresenterWithCtorParameter).IsNotNull();
         }
 
-        public TPresenter Create(object ctorParameter)
+        public TPresenter Create(object viewModel)
         {
-            return (TPresenter) _getPresenterWithCtorParameter(typeof (TPresenter), ctorParameter);
+            var presenterWithCtorParameter = (TPresenter) _getPresenterWithCtorParameter(typeof (TPresenter), viewModel);
+            var currentView = presenterWithCtorParameter.CurrentView;
+            return presenterWithCtorParameter;
         }
 
         public TPresenter Create()

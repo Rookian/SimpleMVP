@@ -20,7 +20,7 @@ namespace SimpleMvp.Presenters
             Ensure.That(article).IsNotNull();
             Ensure.That(currentView).IsNotNull();
 
-            _currentView.ShowDetails(new ArticleViewModel {Id = article.Id, Name = article.Name});
+            _currentView.ShowDetails();
             _currentView.CloseClick += CurrentViewCloseClick;
         }
 

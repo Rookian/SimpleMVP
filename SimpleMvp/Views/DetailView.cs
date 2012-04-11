@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Windows.Forms;
 using Core.Common;
 using SimpleMvp.Bases;
 using SimpleMvp.ViewModels;
 
 namespace SimpleMvp.Views
 {
-    public partial class DetailView : Form, IDetailView
+    public partial class DetailView : ViewBase<ArticleViewModel>, IDetailView
     {
         public DetailView()
         {
@@ -18,9 +17,9 @@ namespace SimpleMvp.Views
 
         public event EventHandler CloseClick;
 
-        public void ShowDetails(ArticleViewModel article)
+        public void ShowDetails()
         {
-            lblLabel.Text = article.Name;
+            lblLabel.Text = Model.Name;
         }
 
         void btnClose_Click(object sender, EventArgs e)

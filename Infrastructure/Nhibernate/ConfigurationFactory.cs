@@ -2,15 +2,13 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Infrastructure.Mappings;
 using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Tool.hbm2ddl;
 
 namespace Infrastructure.Nhibernate
 {
     public class ConfigurationFactory
     {
         const string Database = "Ariha";
-        const string Server = @"localhost\sqlexpress";
+        const string Server = @"localhost";
 
         public Configuration Build()
         {
