@@ -1,7 +1,8 @@
 ﻿namespace Core.DomainModels
 {
-    public class Article : Entity
+    public class Article //: Entity
     {
-        public virtual string Name { get; set; }
+        public virtual int ArticleId { get; set; }
+        public virtual string Description { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace SimpleMvp.Presenters
     public class MainViewPresenter : Presenter<IMainView>
     {
         readonly IArticleRepository _articlesRepository;
-        readonly IPresenterFactoryForMainViewPresenter _presenterFactory;
+        readonly IMainViewPresenterFacade _presenterFactory;
         readonly IUnitOfWork _unitOfWork;
 
         public MainViewPresenter(IMainView currentView, IArticleRepository articlesRepository, IUnitOfWork unitOfWork,
-                                 IPresenterFactoryForMainViewPresenter presenterFactory)
+                                 IMainViewPresenterFacade presenterFactory)
             : base(currentView, unitOfWork)
         {
             _articlesRepository = articlesRepository;
@@ -24,7 +24,6 @@ namespace SimpleMvp.Presenters
             _presenterFactory = presenterFactory;
 
             Ensure.That(articlesRepository).IsNotNull();
-            Ensure.That(unitOfWork).IsNotNull();
             Ensure.That(presenterFactory).IsNotNull();
 
             CurrentView.DetailsClick += View_DetailsClick;
@@ -32,17 +31,17 @@ namespace SimpleMvp.Presenters
             CurrentView.CreateClick += View_CreateClick;
             CurrentView.DeleteClick += View_DeleteClick;
 
-            CurrentView.BindModel(_articlesRepository.GetAll().Select(x => new ArticleViewModel {Id = x.Id, Name = x.Name}));
+            CurrentView.BindModel(_articlesRepository.GetAll().Select(x => new ArticleViewModel { Id = x.ArticleId, Name = x.Description }));
         }
 
         public override void Dispose()
         {
             base.Dispose();
 
-            CurrentView.DetailsClick += View_DetailsClick;
-            CurrentView.CloseClick += ViewCloseClick;
-            CurrentView.CreateClick += View_CreateClick;
-            CurrentView.DeleteClick += View_DeleteClick;
+            CurrentView.DetailsClick -= View_DetailsClick;
+            CurrentView.CloseClick -= ViewCloseClick;
+            CurrentView.CreateClick -= View_CreateClick;
+            CurrentView.DeleteClick -= View_DeleteClick;
         }
 
         void View_DeleteClick(object sender, EventArgs e)

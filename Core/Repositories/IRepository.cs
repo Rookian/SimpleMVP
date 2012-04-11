@@ -2,7 +2,7 @@ using Core.DomainModels;
 
 namespace Core.Repositories
 {
-    public interface IRepository<T> where T : Entity
+    public interface IRepository<T> //where T : Entity
     {
         void Delete(T entity);
         T[] GetAll();

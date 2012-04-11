@@ -7,8 +7,9 @@ namespace Infrastructure.Mappings
     {
         public ArticleMapping()
         {
-            Id(x => x.Id).Column("ArticleId").GeneratedBy.Identity();
-            Map(x => x.Name).Column("Description");
+            Id(x => x.ArticleId).Column("ArticleId").GeneratedBy.Identity();
+            Map(x => x.Description).Column("Description").UniqueKey("Article_Description_Unique");
+            
         }
     }
 }

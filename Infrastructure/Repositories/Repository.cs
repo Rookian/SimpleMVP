@@ -5,7 +5,7 @@ using NHibernate;
 
 namespace Infrastructure.Repositories
 {
-    public abstract class Repository<T> : IRepository<T> where T : Entity
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
         readonly ISession _session;
 

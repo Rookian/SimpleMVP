@@ -31,6 +31,7 @@ namespace SimpleMvp.Presenters
 
         public override void Dispose()
         {
+            base.Dispose();
             _currentView.CloseClick -= CurrentViewCloseClick;
         }
     }

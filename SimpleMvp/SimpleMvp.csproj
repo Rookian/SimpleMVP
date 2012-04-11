@@ -44,9 +44,9 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bases\IPresenterFactoryForMainViewPresenter.cs" />
+    <Compile Include="Bases\IMainViewPresenterFacade.cs" />
     <Compile Include="Infrastructure\Presenter.cs" />
-    <Compile Include="PresenterFactories\PresenterFactoryForMainViewPresenter.cs" />
+    <Compile Include="PresenterFactories\MainViewPresenterFacade.cs" />
     <Compile Include="Infrastructure\BindingHelper.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Presenters\CreateViewPresenter.cs" />

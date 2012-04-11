@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{D5A2C5FB-9AAF-49EF-8C8A-B1D98D099006}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{6BEB56C5-3FDF-42C6-BA67-8427A7CEC5B7}</Project>
       <Name>Infrastructure</Name>

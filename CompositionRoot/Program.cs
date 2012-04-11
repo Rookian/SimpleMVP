@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using SimpleMvp.Bases;
 using SimpleMvp.Infrastructure.Bases;
 using StructureMap;
+using Core.Repositories;
 
 namespace CompositionRoot
 {
@@ -18,6 +19,9 @@ namespace CompositionRoot
             Application.SetCompatibleTextRenderingDefault(false);
 
             BootsTrapper.Boot();
+
+            var repo = ObjectFactory.GetInstance<IArticleRepository>();
+            var result = repo.GetByDescription("Alex");
 
             using (var mainForm = ObjectFactory.GetInstance<IPresenter<IMainView>>())
             {
