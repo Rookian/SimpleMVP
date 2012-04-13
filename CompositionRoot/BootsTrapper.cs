@@ -28,8 +28,8 @@ namespace CompositionRoot
 
                  // Get internal Presenter Factory with Ctor Parameter
                  x.For<Func<Type, object, IPresenter<IView>>>().Use(
-                     (type, param) => (IPresenter<IView>)ObjectFactory
-                                                              .With(param.GetType(), param)
+                     (type, viewModel) => (IPresenter<IView>)ObjectFactory
+                                                              .With(viewModel.GetType(), viewModel)
                                                               .GetInstance(type));
 
                  // Get internal Presenter Factory without Ctor Parameter
@@ -37,5 +37,6 @@ namespace CompositionRoot
                      type => (IPresenter<IView>)ObjectFactory.GetInstance(type));
              });
          }
+
     }
 }

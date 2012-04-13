@@ -21,7 +21,9 @@ namespace SimpleMvp.Presenters
             Ensure.That(article).IsNotNull();
             Ensure.That(currentView).IsNotNull();
 
+
             _currentView.ShowDetails(article);
+
             _currentView.CloseClick += CurrentViewCloseClick;
         }
 

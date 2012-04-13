@@ -5,6 +5,6 @@ namespace SimpleMvp.Bases
     public interface IMainViewPresenterFacade
     {
         IPresenter<ICreateView> CreateCreatePresenter();
-        IPresenter<IDetailView> CreateDetailPresenter(object parameterCtor);
+        IPresenter<IDetailView> CreateDetailPresenter(object viewModel);
     }
 }

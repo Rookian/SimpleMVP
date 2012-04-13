@@ -1,5 +1,9 @@
+using System.Linq;
+using System.Reflection;
 using SimpleMvp.Bases;
 using SimpleMvp.Infrastructure.Bases;
+using SimpleMvp.ViewModels;
+using SimpleMvp.Views;
 
 namespace SimpleMvp.PresenterFactories
 {
@@ -22,9 +26,13 @@ namespace SimpleMvp.PresenterFactories
             return _createPresenterFactory.Create();
         }
 
-        public IPresenter<IDetailView> CreateDetailPresenter(object parameterCtor)
+        public IPresenter<IDetailView> CreateDetailPresenter(object viewModel)
         {
-            return _detailPresenterFactory.Create(parameterCtor);
+            var presenter = _detailPresenterFactory.Create(viewModel);
+            var genericTypeDefinition = presenter.CurrentView.GetType().BaseType.GetGenericTypeDefinition();
+            var propertyInfo = genericTypeDefinition.GetProperties().FirstOrDefault(x => x.Name == "Model");
+            propertyInfo.SetValue(presenter.CurrentView, viewModel,null);
+            return _detailPresenterFactory.Create(viewModel);
         }
     }
 }

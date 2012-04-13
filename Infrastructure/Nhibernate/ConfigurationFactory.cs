@@ -7,12 +7,13 @@ using NHibernate.Tool.hbm2ddl;
 using NHibernate.Context;
 using NHibernate.Mapping.ByCode;
 
+
 namespace Infrastructure.Nhibernate
 {
     public class ConfigurationFactory
     {
         const string Database = "Ariha";
-        const string Server = @"localhost\sqlexpress";
+        const string Server = @"localhost";
 
         public static Configuration Build()
         {           

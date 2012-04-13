@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows.Forms;
 using Core.Common;
 using SimpleMvp.Bases;
 using SimpleMvp.ViewModels;
+using System.Windows.Forms;
 
 namespace SimpleMvp.Views
 {
@@ -18,9 +18,9 @@ namespace SimpleMvp.Views
 
         public event EventHandler CloseClick;
 
-        public void ShowDetails(ArticleViewModel article)
+        public void ShowDetails(ArticleViewModel model)
         {
-            lblLabel.Text = article.Name;
+            lblLabel.Text = model.Name;
         }
 
         void btnClose_Click(object sender, EventArgs e)
