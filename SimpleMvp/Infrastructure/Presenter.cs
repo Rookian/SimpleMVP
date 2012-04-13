@@ -2,6 +2,7 @@ using System.Windows.Forms;
 using Core;
 using Core.Common;
 using SimpleMvp.Infrastructure.Bases;
+using System.Collections.Generic;
 
 namespace SimpleMvp.Infrastructure
 {

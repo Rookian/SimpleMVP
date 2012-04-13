@@ -11,7 +11,7 @@ namespace CompositionRoot
     {
          public static void Boot()
          {
-             var buildSessionFactory = new ConfigurationFactory().Build().BuildSessionFactory();
+             var buildSessionFactory = ConfigurationFactory.Build().BuildSessionFactory();
              
              ObjectFactory.ResetDefaults();
              ObjectFactory.Initialize(x =>
@@ -24,7 +24,6 @@ namespace CompositionRoot
                  });
 
                  x.For(typeof(IPresenterFactory<>)).Use(typeof(PresenterFactory<>));
-
                  x.For<ISession>().Use(buildSessionFactory.OpenSession);
 
                  // Get internal Presenter Factory with Ctor Parameter
@@ -32,6 +31,7 @@ namespace CompositionRoot
                      (type, param) => (IPresenter<IView>)ObjectFactory
                                                               .With(param.GetType(), param)
                                                               .GetInstance(type));
+
                  // Get internal Presenter Factory without Ctor Parameter
                  x.For<Func<Type, IPresenter<IView>>>().Use(
                      type => (IPresenter<IView>)ObjectFactory.GetInstance(type));

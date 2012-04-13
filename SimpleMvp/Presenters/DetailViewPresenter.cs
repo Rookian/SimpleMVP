@@ -12,7 +12,8 @@ namespace SimpleMvp.Presenters
         readonly IDetailView _currentView;
         ArticleViewModel _article;
 
-        public DetailViewPresenter(IDetailView currentView, ArticleViewModel article, IUnitOfWork unitOfWork) : base(currentView, unitOfWork)
+        public DetailViewPresenter(IDetailView currentView, ArticleViewModel article, IUnitOfWork unitOfWork)
+            : base(currentView, unitOfWork)
         {
             _article = article;
             _currentView = currentView;
@@ -20,7 +21,7 @@ namespace SimpleMvp.Presenters
             Ensure.That(article).IsNotNull();
             Ensure.That(currentView).IsNotNull();
 
-            _currentView.ShowDetails(new ArticleViewModel {Id = article.Id, Name = article.Name});
+            _currentView.ShowDetails(article);
             _currentView.CloseClick += CurrentViewCloseClick;
         }
 
